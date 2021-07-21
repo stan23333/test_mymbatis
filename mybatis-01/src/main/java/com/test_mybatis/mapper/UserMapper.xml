@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test_mybatis.mapper.UserMapper">
+    <!-- 查找全部用户-->
+    <select id="getUserList" resultType="user">
+        select *
+        from hw_mangagement.user
+    </select>
+    <!--通过id获取用户-->
+    <select id="getUserById" parameterType="int" resultType="user">
+        select *
+        from hw_mangagement.user
+        where id = #{id}
+    </select>
+    <!--插入用户-->
+    <insert id="insertUser" parameterType="user">
+        insert into hw_mangagement.user(id, uname, pwd, sex, rname, type, phone, status)
+        values (#{id}, #{uname}, #{pwd}, #{sex},
+                #{rname}, #{type}, #{phone}, #{status});
+    </insert>
+</mapper>
